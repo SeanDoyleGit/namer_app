@@ -26,18 +26,26 @@ class NamerAppState extends ChangeNotifier {
   var word = WordPair.random();
   var favorites = <WordPair>[];
 
+  var removedIndex = 0;
+
   void getNext() {
     word = WordPair.random();
     notifyListeners();
   }
 
   void removeFavorite(WordPair pair) {
+    removedIndex = favorites.indexOf(pair);
     favorites.remove(pair);
     notifyListeners();
   }
 
   void addFavorite(WordPair pair) {
     favorites.add(pair);
+    notifyListeners();
+  }
+
+  void restoreFavorite(WordPair pair) {
+    favorites.insert(removedIndex, pair);
     notifyListeners();
   }
 

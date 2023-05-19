@@ -36,7 +36,7 @@ class FavoritesPage extends StatelessWidget {
                     action: SnackBarAction(
                       label: 'Undo',
                       onPressed: () {
-                        appState.addFavorite(pair);
+                        appState.restoreFavorite(pair);
                       },
                     ),
                   );
